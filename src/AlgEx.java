@@ -218,18 +218,18 @@ public class AlgEx implements Runnable {
                 return;
             }
             List<List<Integer>> list = findAllMinPaths();
-            Iterator<List<Integer>> iter = list.iterator();
-            Iterator<Integer> iter1;
+            Iterator<List<Integer>> iterList = list.iterator();
+            Iterator<Integer> iterToDelete;
             List<Integer> tmp;
-            Set<Integer> toDelete = new HashSet<>();
-            while (iter.hasNext()) {
-                tmp = iter.next();
+            Set<Integer> toDelete = new TreeSet<>();
+            while (iterList.hasNext()) {
+                tmp = iterList.next();
                 Collections.sort(tmp);
                 toDelete.add(tmp.get((root.minLength + 1) / 2));
             }
-            iter1 = toDelete.iterator();
-            while (iter1.hasNext()) {
-                leftDelete(iter1.next());
+            iterToDelete = toDelete.iterator();
+            while (iterToDelete.hasNext()) {
+                leftDelete(iterToDelete.next());
             }
         }
     }
